@@ -1,0 +1,10 @@
+SELECT p.Id, p.CreationDate, p.Title, p.Body, p.Tags,
+p.ViewCount, p.CommentCount, p.AnswerCount, p.Score 
+FROM Posts as p
+LEFT JOIN PostTypes as t ON p.PostTypeId = t.id
+WHERE t.Name = 'Question'
+AND p.ViewCount > 10
+AND p.CommentCount > 2
+AND p.AnswerCount > 1
+AND p.Score > 2
+AND len(p.Tags) > 0
